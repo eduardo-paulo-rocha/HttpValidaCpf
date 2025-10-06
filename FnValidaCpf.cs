@@ -28,9 +28,9 @@ public class FnValidaCpf(ILogger<FnValidaCpf> logger, IValidateDocumentService v
 
         if (string.IsNullOrEmpty(cpf) || !_validateDocumentService.ValidateCpf(cpf))
         {
-            return new BadRequestObjectResult($"CPF {cpf} inválido.");
+            return new BadRequestObjectResult($"[{DateTime.UtcNow}] CPF {cpf} inválido.");
         }
 
-        return new OkObjectResult("CPF válido e não consta na base de fraudes e não consta na base de débitos.");
+        return new OkObjectResult($"[{DateTime.UtcNow}] CPF válido e não consta na base de fraudes e não consta na base de débitos.");
     }
 }

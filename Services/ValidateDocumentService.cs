@@ -2,14 +2,9 @@ using Microsoft.Extensions.Logging;
 
 namespace HttpValidaCpf.Services;
 
-public class ValidateDocumentService : IValidateDocumentService
+public class ValidateDocumentService(ILogger<ValidateDocumentService> logger) : IValidateDocumentService
 {
-    private readonly ILogger<ValidateDocumentService> _logger;
-
-    public ValidateDocumentService(ILogger<ValidateDocumentService> logger)
-    {
-        _logger = logger;
-    }
+    private readonly ILogger<ValidateDocumentService> _logger = logger;
 
     public bool ValidateCpf(string cpf)
     {
